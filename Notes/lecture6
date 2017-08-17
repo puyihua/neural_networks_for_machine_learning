@@ -1,0 +1,35 @@
+Stochastic gradient descent
+
+ - online
+ - mini batches
+
+mini batches:
+1. need to be balanced for classes.
+2. lecture 6 page 8
+
+tricks for mini-batch:
+  1. break the symmetry by initializing the weight to be small random values.
+  2. initialize the weight to be proportional to sqrt(fan-in)
+
+  3. shift the inputs —— make it a zero mean over the whole training set
+  4. scale the inputs -- make it have a unit variance over the whole training set.
+  5. more thorough method : decorrlate the input components(PCA)
+
+  6. momentum: v(t) = alpha * v(t-1) - learningRate * partial(t)
+              delta weight = v(t)
+
+    and a better type on momentum : lecture 6 page 21
+
+  7. a separate adaptive learning rate for each conection
+        delta Weight(i, j) = - learningRate * g(i, j) * partial(i, j)
+        if partial(t)*partial(t-1) <0
+        then g = g(t-1) + 0.5
+        else g = g(t-1) * 0.95
+
+  8. RMSprop - a mini-batch version of Rprop
+    .... lecture 6  page 29
+
+
+
+tomorrow on 2017.8.17
+READ  <no more pesky learning rate>
