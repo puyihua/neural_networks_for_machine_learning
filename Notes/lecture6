@@ -20,7 +20,7 @@ tricks for mini-batch:
 
     and a better type on momentum : lecture 6 page 21
 
-  7. a separate adaptive learning rate for each conection
+  7. a separate adaptive learning rate for each connection
         delta Weight(i, j) = - learningRate * g(i, j) * partial(i, j)
         if partial(t)*partial(t-1) <0
         then g = g(t-1) + 0.5
@@ -33,3 +33,23 @@ tricks for mini-batch:
 
 tomorrow on 2017.8.17
 READ  <no more pesky learning rate>
+
+ ↑ now on 8.17, not see this paper ,but two lectures a day.
+
+
+Q:   Hyperbolic tangent v/s logistic sigmoid
+The lecture says that the hyperbolic tangent is better than the logistic sigmoid
+ in one respect that it produces hidden activations that are roughly zero mean.
+ Why can't we achieve the same by using logistic sigmoid hidden units and normalizing
+  their outputs (zero mean, unit variance)?
+
+
+A:
+Though not covered in this course, there is a method called batch normalization
+where you add a layer that maintains statistics about its inputs and attempts to
+normalize them to have zero mean and unit variance. It helps a bunch when used with
+logistic activations, but it also often helps when using other activations like tanh
+and ReLU.
+
+Since tanh IS (2* sigmoid - 1) I think it is essentially just a linearly transformed
+sigmoid already.
