@@ -1,4 +1,4 @@
-# Neural Networks for Machine Learning - Geoffrey Hinton
+# Neural Networks for Machine Learning - Geoffrey Hinton
 ## Lecture 9 Notes by pyh
 
 ### something about prevent **overfitting**
@@ -20,6 +20,8 @@
 
 ![Screen Shot 2017-08-19 at 8.50.53 PM](https://i.loli.net/2017/08/19/59983624f162f.png)
 
-They are sophisticated and intricate.
+They are sophisticated and intricate.
+
 The best way master it is to revise the lecture 9 Page 19 again.
+
 And I will continue to explore a few days later, perhaps with the book *the methods for statistical learning* by Hang Li.
