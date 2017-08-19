@@ -1,0 +1,30 @@
+lecture8
+
+
+ - "Hessian-Free" optimization
+   i should explore it deeper when i restart reading deeplearningbook
+
+  Newton's method
+  Curvature Matrices
+  Conjugate gradient *
+
+
+Q:
+  The multiplicative factors described in the lecture are an alternative to simply
+   letting the input character choose the hidden-to-hidden weight matrix. In the
+
+  lecture, it was explained that that simple model would have 86 x 1500 x 1500 =
+  193 500 000 parameters, to specify how the hidden units and the input
+
+  character at time t influence the hidden units at time t+1. How many parameters
+  does the model with the factors have for that same purpose,
+
+  i.e. for specifying how the hidden units and the input character at time t influence
+  the hidden units at time t+1? Let's say that there are
+
+  1500 hidden units, 86 different input characters, and 1500 factors.
+A:
+  for each factor:
+  86 parameters from input to hidden +
+  1500 parameters from current hidden to incoming +
+  1500 parameters from hidden to output
