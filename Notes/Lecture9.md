@@ -20,6 +20,14 @@
 
 ![Screen Shot 2017-08-19 at 8.50.53 PM](https://i.loli.net/2017/08/19/59983624f162f.png)
 
+P(D|W) : Given the W (that's what you choose), the probability that you can observe the data (which is already in your train set).
+
+P(D): value of this term is not affected by which W you choose, so we usually ignore it.
+
+
+P(W|D): the final goal of learning is to find a W that maximize the P(W|D).
+
+
 They are sophisticated and intricate.
 
 The best way master it is to revise the lecture 9 Page 19 again.
