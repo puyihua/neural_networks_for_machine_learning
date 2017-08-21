@@ -28,8 +28,12 @@ P(D): value of this term is not affected by which W you choose, so we usually ig
 P(W|D): the final goal of learning is to find a W that maximize the P(W|D).
 
 
-They are sophisticated and intricate.
+### Regularization methods for Weight
 
-The best way master it is to revise the lecture 9 Page 19 again.
+Different regularization methods have different effects on the learning process. For example L2 regularization penalizes high weight values. L1 regularization penalizes weight values that do not equal zero. Adding noise to the weights during learning ensures that the learned hidden representations take extreme values. Sampling the hidden representations regularizes the network by pushing the hidden representation to be binary during the forward pass which limits the modeling capacity of the network.
+
+
+### Incoming works
+###### _Bayesian_ and _Information Theory_
 
 And I will continue to explore a few days later, perhaps with the book *the methods for statistical learning* by Hang Li.
