@@ -104,7 +104,7 @@ end
 
 function ret = log_sum_exp_over_rows(a)
   % This computes log(sum(exp(a), 1)) in a numerically stable way
-  maxs_small = max(a, [], 1);
+  maxs_small = max(a, [], 1); % return column max
   maxs_big = repmat(maxs_small, [size(a, 1), 1]);
   ret = log(sum(exp(a - maxs_big), 1)) + maxs_small;
 end
@@ -149,12 +149,27 @@ function ret = d_loss_by_d_model(model, data, wd_coefficient)
   
   % forward propagation
   
-  hidden_in = model.input_to_hid * data.inputs;
-  hidden_out = logistic(hidden_in);
+  hid_input = model.input_to_hid * data.inputs; 
+  hid_output = logistic(hid_input); 
+  class_input = model.hid_to_class * hid_output; 
+  % softmax
+  class_normalizer = log_sum_exp_over_rows(class_input);
+  log_class_prob = class_input - repmat(class_normalizer, [size(class_input, 1), 1]); % log of probability of each class. size: <number of classes, i.e. 10> by <number of data cases>
+  class_prob = exp(log_class_prob); % probability of each class. Each column (i.e. each case) sums to 1. size: <number of classes, i.e. 10> by <number of data cases>
   
+  % hidden to class gradient
+  class_input_gradient = (class_prob - data.targets) / size(data.inputs,2); % dC/dZ
+  hid_to_class_gradient = class_input_gradient * hid_output'; % without weight decay gradient
   
-  ret.input_to_hid = model.input_to_hid * 0;
-  ret.hid_to_class = model.hid_to_class * 0;
+  ret.hid_to_class = model.hid_to_class * wd_coefficient + hid_to_class_gradient;
+  
+  %input to hidden gradient
+  hidden_output_gradient = model.hid_to_class' * class_input_gradient;
+  hidden_input_gradient = hidden_output_gradient .* (1 - hid_output) .* hid_output;
+  input_to_hid_gradient = hidden_input_gradient * data.inputs';
+  
+  ret.input_to_hid = model.input_to_hid * wd_coefficient + input_to_hid_gradient;
+  
   
 end
 
