@@ -1,4 +1,4 @@
-## Proof about Gradient in softmax with C-E cost function
+## Proof about Gradient in softmax with C-E cost function
 In lecture 4, professor Hinton propose a very simple formula to calculate the cost function gradient for softmax function input  ___Z___ .
 That's as follows:
 
@@ -9,4 +9,4 @@ The result is simple but also obscure. So when I was coping with the Assignment3
 
 ![prove-softmax-CE-gradiant](https://i.loli.net/2017/08/23/599d9fdf3fe30.jpg)
 
-######time for bed, goodnight!
+###### time for bed, goodnight!
